@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 2",
+	"properties": {
+		"content": {
+			"query": "USE sandbox\nGO\ncreate master key encryption by password = 'Password01!!';\nGO\n\nCREATE DATABASE SCOPED CREDENTIAL [cred-readonlydemoblobs]\nWITH IDENTITY='SHARED ACCESS SIGNATURE',  \nSECRET = 'sv=2019-12-12&ss=btqf&srt=sco&st=2020-12-16T17%3A01%3A00Z&se=2034-12-18T17%3A01%3A00Z&sp=rl&sig=mbTmp9ajAH0z3WUjJsaWwE6jF1%2BKPF56uStoT18R5AU%3D'\nGO\n\nCREATE EXTERNAL DATA SOURCE readonlydemoblobs WITH (\n    LOCATION = 'https://davewdemoblobs.blob.core.windows.net/nyctaxidata',\n    CREDENTIAL = [cred-readonlydemoblobs]\n);",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"poolName": "Built-in",
+				"databaseName": "sandbox"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
